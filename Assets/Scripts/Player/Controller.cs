@@ -38,6 +38,10 @@ public class Controller : MonoBehaviour
         switch (controllerType) {
             case 0:
                 return getKeyboardInput();
+            case 1:
+                break;
+            case 2:
+                break;
         }
 
         return Vector2.zero;

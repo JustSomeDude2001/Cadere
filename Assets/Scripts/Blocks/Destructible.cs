@@ -5,7 +5,7 @@ using UnityEngine;
 public class Destructible : MonoBehaviour
 {
     public int Durability;
-
+    
     private void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.tag == "Player") {
             Durability--;
