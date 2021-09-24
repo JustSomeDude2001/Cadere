@@ -29,6 +29,8 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.debug
+*.so
 
 *.pidb.meta
 *.pdb.meta
