@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    private Rigidbody2D selfRigidbody;
+    private Rigidbody selfRigidbody;
 
     /*
         0 - Keyboard (testing)
@@ -20,21 +20,21 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        selfRigidbody = GetComponent<Rigidbody2D>();
+        selfRigidbody = GetComponent<Rigidbody>();
     }
 
-    Vector2 getKeyboardInput() {
+    Vector3 getKeyboardInput() {
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            return Vector2.left;
+            return Vector3.left;
         } else if (Input.GetKey(KeyCode.RightArrow)) {
-            return Vector2.right;
+            return Vector3.right;
         }
 
-        return Vector2.zero;
+        return Vector3.zero;
     }
 
     // Input can wary, hence specific function.
-    Vector2 getInput() {
+    Vector3 getInput() {
         switch (controllerType) {
             case 0:
                 return getKeyboardInput();
@@ -48,7 +48,7 @@ public class Controller : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         selfRigidbody.AddForce(getInput() * sensitivity);   
     }

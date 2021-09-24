@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class VelocityBalancer : MonoBehaviour
 {
-    private Rigidbody2D selfRigidbody;
+    private Rigidbody selfRigidbody;
     public float minY;
     public float maxY;
 
@@ -19,11 +19,13 @@ public class VelocityBalancer : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        selfRigidbody = GetComponent<Rigidbody2D>();
+        Debug.Log("GotSelfBody");
+        selfRigidbody = GetComponent<Rigidbody>();
     }
 
     // Balancing vertical speed to prevent uncontrollable flight
-    private void FixedUpdate() {
+    void FixedUpdate() {
+
         float curX = selfRigidbody.velocity.x;
         float curY = selfRigidbody.velocity.y;
 
@@ -42,16 +44,16 @@ public class VelocityBalancer : MonoBehaviour
             needChange = true;
         }
 
-        if (Mathf.Abs(curY) < targetAbsoluteY) {
+        if (Mathf.Abs(curY) < targetAbsoluteY && curY >= 0) {
             if (Mathf.Abs(addY) <= float.Epsilon) {
-                addY = (curY - targetAbsoluteY) * targetAbsoluteYApproachRate;
-            }
+                addY = (targetAbsoluteY - curY) * targetAbsoluteYApproachRate;
 
-            needChange = true;
+                needChange = true;
+            }
         }
 
         if (needChange) {
-            selfRigidbody.AddForce(new Vector2(addX, addY));
+            selfRigidbody.AddForce(new Vector3(addX, addY, 0) * selfRigidbody.mass);
         }
     }
 }

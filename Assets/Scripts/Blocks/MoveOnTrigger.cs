@@ -7,7 +7,7 @@ public class MoveOnTrigger : MonoBehaviour
     public GameObject triggerBlock;
     public GameObject ghostBlock;
 
-    private Vector2 targetPosition;
+    private Vector3 targetPosition;
 
     public float targetApproachRate;
 
@@ -17,9 +17,7 @@ public class MoveOnTrigger : MonoBehaviour
     void OnEnable() {
         selfTransform = GetComponent<Transform>();
 
-        Vector3 targetPosition3D = ghostBlock.GetComponent<Transform>().position;
-
-        targetPosition = new Vector2(targetPosition3D.x, targetPosition3D.y);
+        targetPosition = ghostBlock.GetComponent<Transform>().position;
     }
 
     // Update is called once per frame
@@ -33,11 +31,10 @@ public class MoveOnTrigger : MonoBehaviour
             return;
         }
 
-        Vector2 currentPosition = new Vector2(selfTransform.position.x, selfTransform.position.y);
+        Vector3 currentPosition = selfTransform.position;
+        Vector3 movementVector = (targetPosition - currentPosition) * targetApproachRate;
 
-        Vector2 movementVector = (targetPosition - currentPosition) * targetApproachRate;
-
-        Vector2 nextPosition = currentPosition + movementVector;
+        Vector3 nextPosition = currentPosition + movementVector;
 
         if (movementVector.magnitude <= MOVEMENT_EPSILON) {
             nextPosition = targetPosition;
@@ -45,7 +42,7 @@ public class MoveOnTrigger : MonoBehaviour
             Debug.Log("Moving Block Finished Moving");
         }
 
-        Vector3 finalPosition = new Vector3(nextPosition.x, nextPosition.y, 0);
+        Vector3 finalPosition = nextPosition;
 
         selfTransform.position = finalPosition;
     }
