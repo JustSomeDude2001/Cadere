@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectFollower : MonoBehaviour
 {
     public GameObject target;
-    private Vector3 observationOffset;
+    public Vector3 observationOffset;
 
 
     private Transform targetTransform;
@@ -14,14 +14,11 @@ public class ObjectFollower : MonoBehaviour
     {
         selfTransform = GetComponent<Transform>();
         targetTransform = target.GetComponent<Transform>();
-
-        observationOffset = selfTransform.position - targetTransform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         selfTransform.SetPositionAndRotation(targetTransform.position + observationOffset,
                                              selfTransform.rotation);
     }

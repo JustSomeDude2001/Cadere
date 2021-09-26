@@ -5,8 +5,6 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     private Rigidbody selfRigidbody;
-    private Gyroscope selfGyroscope;
-
     private Vector3 screenCenterPoint;
 
     /*
@@ -15,30 +13,22 @@ public class Controller : MonoBehaviour
         2 - Touchscreen
     */
     public static int controllerType = 1;
+
     /*
-        Magnitude of acceleration caused by inputs.
+        Magnitude multiplier of acceleration caused by inputs.
     */
-    public float sensitivity;
+    public static int sensitivity = 40;
 
     // Start is called before the first frame update
     void OnEnable()
     {
         selfRigidbody = GetComponent<Rigidbody>();
-        selfGyroscope = Input.gyro;
-        selfGyroscope.enabled = true;
         screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Debug.Log(screenCenterPoint);
     }
 
-    public void flipControlls() {
-        //Flip to touchscreen/flip to gyro
-        if (controllerType == 1) {
-            controllerType = 2;
-            selfGyroscope.enabled = false;
-        } else {
-            controllerType = 1;
-            selfGyroscope.enabled = true;
-        }
+    public void setSensitivity(int newSensitivity) {
+        sensitivity = newSensitivity;
     }
 
     Vector3 getKeyboardInput() {
@@ -52,7 +42,7 @@ public class Controller : MonoBehaviour
     }
 
     Vector3 getGyroscopeInput() {
-        return new Vector3(selfGyroscope.gravity.x, 0, 0);
+        return new Vector3((Input.acceleration).normalized.x, 0, 0);
     }
 
     Vector3 getTouchscreenInput() {
@@ -60,10 +50,9 @@ public class Controller : MonoBehaviour
 
             Touch newTouch = Input.GetTouch(0);
 
-            Vector3 normalizedMovement = new Vector3(newTouch.position.x, newTouch.position.y, 0);
+            Vector3 normalizedMovement = new Vector3(newTouch.position.x, 0, 0);
 
             normalizedMovement.x = (normalizedMovement.x - screenCenterPoint.x) / screenCenterPoint.x;
-            normalizedMovement.y = (normalizedMovement.y - screenCenterPoint.y) / screenCenterPoint.y;
 
             return normalizedMovement;
         }
@@ -87,8 +76,16 @@ public class Controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        selfRigidbody.velocity = (new Vector3(getInput().x * sensitivity,
-                                  selfRigidbody.velocity.y, 0));
+        Vector3 newVelocity = selfRigidbody.velocity;
+        newVelocity.x = getInput().x * sensitivity;
+
+        Vector3 oldVelocity = selfRigidbody.velocity;
+
+        Vector3 deltaVelocity = newVelocity - oldVelocity;
+
+        selfRigidbody.AddForce(deltaVelocity * selfRigidbody.mass);
+        //selfRigidbody.velocity = (new Vector3(getInput().x * sensitivity,
+        //                          selfRigidbody.velocity.y, 0));
         // selfRigidbody.AddForce(getInput() * sensitivity);   
     }
 }
