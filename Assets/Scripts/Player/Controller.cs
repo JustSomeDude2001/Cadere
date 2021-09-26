@@ -10,11 +10,11 @@ public class Controller : MonoBehaviour
     private Vector3 screenCenterPoint;
 
     /*
-        0 - Keyboard (testing)
+        0 - Keyboard (DEPRECATED, REMOVE LATER)
         1 - Gyroscope
         2 - Touchscreen
     */
-    public int controllerType;
+    public static int controllerType = 1;
     /*
         Magnitude of acceleration caused by inputs.
     */
@@ -24,18 +24,20 @@ public class Controller : MonoBehaviour
     void OnEnable()
     {
         selfRigidbody = GetComponent<Rigidbody>();
-        switch (controllerType) {
-            case 0:
-                break;
-            case 1:
-                selfGyroscope = Input.gyro;
-                selfGyroscope.enabled = true;
-                break;
-            case 2:
-                screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-                Debug.Log(screenCenterPoint);
-                break;
+        selfGyroscope = Input.gyro;
+        selfGyroscope.enabled = true;
+        screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Debug.Log(screenCenterPoint);
+    }
 
+    public void flipControlls() {
+        //Flip to touchscreen/flip to gyro
+        if (controllerType == 1) {
+            controllerType = 2;
+            selfGyroscope.enabled = false;
+        } else {
+            controllerType = 1;
+            selfGyroscope.enabled = true;
         }
     }
 
@@ -83,9 +85,10 @@ public class Controller : MonoBehaviour
         return Vector2.zero;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        selfRigidbody.AddForce(getInput() * sensitivity);   
+        selfRigidbody.velocity = (new Vector3(getInput().x * sensitivity,
+                                  selfRigidbody.velocity.y, 0));
+        // selfRigidbody.AddForce(getInput() * sensitivity);   
     }
 }
