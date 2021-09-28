@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class StopGame : MonoBehaviour
 {
     public void stopGame() {
-        SceneManager.LoadScene("MainMenu");
+        Debug.Log("Exiting to menu");
+
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
