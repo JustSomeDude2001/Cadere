@@ -7,6 +7,8 @@ public class DefaultLevelProgresser : LevelProgresser
 {   
     private Transform selfTransform;
 
+    public int levelAmount;
+
     void OnEnable() {
         selfTransform = GetComponent<Transform>();
         selfLevelManager = GetComponent<LevelManager>();
@@ -19,13 +21,23 @@ public class DefaultLevelProgresser : LevelProgresser
 
     protected override void progressLevel()
     {
-        selfLevelManager.appendScene("SampleScene");
+        string nextSceneName = "Level";
+
+        int nextLevel = (Random.Range(0, levelAmount));
+
+        if (nextLevel == levelAmount) {
+            nextLevel--;
+        }
+
+        nextSceneName += nextLevel.ToString();
+
+        selfLevelManager.appendScene(nextSceneName);
     }
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             progressLevel();
             selfTransform.position = nextPosition();
-        }    
+        }
     }
 }

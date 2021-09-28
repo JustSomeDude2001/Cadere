@@ -6,6 +6,5 @@ using UnityEngine.SceneManagement;
 public abstract class SceneChooser : MonoBehaviour
 {
     protected LevelManager selfLevelManager;
-
     public abstract Scene chooseNextScene();
 }
