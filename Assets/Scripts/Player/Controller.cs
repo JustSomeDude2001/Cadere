@@ -74,6 +74,16 @@ public class Controller : MonoBehaviour
         return Vector2.zero;
     }
 
+    void obtainHorizontalEffect() {
+        //TO-DO
+        // Move current horizontal logic of user input here.
+    }
+
+    void obtainVerticalEffect() {
+        //TO-DO
+        // Implement braking dependent on vertical position of the finger.
+    }
+
     void FixedUpdate()
     {
         Vector3 newVelocity = selfRigidbody.velocity;
