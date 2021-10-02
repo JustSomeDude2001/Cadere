@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4830815483717997129}
   - component: {fileID: 3054067777507381481}
   - component: {fileID: -8523586632473436057}
+  - component: {fileID: 1719625176649827383}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -110,8 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358f7cd06d90d97de8d0c319d00fff91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerType: 0
-  sensitivity: 10
 --- !u!54 &3054067777507381481
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,7 +139,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd9de12b2d6683a3825e41148a1c97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minY: -10
-  maxY: 10
-  targetAbsoluteY: 8
-  targetAbsoluteYApproachRate: 0.1
+--- !u!114 &1719625176649827383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839760851295570245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a3a66982b009010b3d1b5c2597b6c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brakingRate: 0.9
