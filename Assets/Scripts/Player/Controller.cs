@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour
         1 - Gyroscope
         2 - Touchscreen
     */
-    public static int controllerType = 1;
+    public static int controllerType = 2;
 
     /*
         Magnitude multiplier of acceleration caused by inputs.
