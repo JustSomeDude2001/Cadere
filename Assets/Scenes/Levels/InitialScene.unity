@@ -1206,6 +1206,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 468566462878591643, guid: 817ed138803423abcad5638746583098,
+        type: 3}
+      propertyPath: levelAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160947404066710169, guid: 817ed138803423abcad5638746583098,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5160947404066710170, guid: 817ed138803423abcad5638746583098,
         type: 3}
       propertyPath: levelAmount
@@ -1219,7 +1229,7 @@ PrefabInstance:
     - target: {fileID: 5160947404066710171, guid: 817ed138803423abcad5638746583098,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000004209578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5160947404066710171, guid: 817ed138803423abcad5638746583098,
         type: 3}
@@ -1270,6 +1280,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelProgresser
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160947404066710174, guid: 817ed138803423abcad5638746583098,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160947404066710174, guid: 817ed138803423abcad5638746583098,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817ed138803423abcad5638746583098, type: 3}
