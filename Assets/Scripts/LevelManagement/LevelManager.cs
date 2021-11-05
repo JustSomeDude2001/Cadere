@@ -36,6 +36,9 @@ public class LevelManager : MonoBehaviour
             Transform currentTransform = i.GetComponent<Transform>();
 
             if (currentTransform != null) {
+                if(i.tag == "Static") {
+                    continue;
+                }
                 currentTransform.position += new Vector3(0, sceneHeight, 0);
             }
         }
@@ -70,7 +73,6 @@ public class LevelManager : MonoBehaviour
         if (loadingLevels.Count != 0 && loadingLevels.Peek().isDone) {
             Debug.Log("Appending level " + sceneNameQueue.Peek());
             appendLoadedScene();
-            selfTransform.position = Vector3.zero;
         }
         //flushObjects();
     }
