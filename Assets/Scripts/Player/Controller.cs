@@ -8,11 +8,9 @@ public class Controller : MonoBehaviour
     private Vector3 screenCenterPoint;
 
     /*
-        0 - Keyboard (DEPRECATED, REMOVE LATER)
-        1 - Gyroscope
-        2 - Touchscreen
+        All deprecated controls removed.
+        Only touchscreen controls.
     */
-    public static int controllerType = 2;
 
     /*
         Magnitude multiplier of acceleration caused by inputs.
@@ -31,21 +29,7 @@ public class Controller : MonoBehaviour
         sensitivity = newSensitivity;
     }
 
-    Vector3 getKeyboardInput() {
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            return Vector3.left;
-        } else if (Input.GetKey(KeyCode.RightArrow)) {
-            return Vector3.right;
-        }
-
-        return Vector3.zero;
-    }
-
-    Vector3 getGyroscopeInput() {
-        return new Vector3((Input.acceleration).normalized.x, 0, 0);
-    }
-
-    Vector3 getTouchscreenInput() {
+    Vector3 getInput() {
         if (Input.touchCount > 0) {
 
             Touch newTouch = Input.GetTouch(0);
@@ -58,20 +42,6 @@ public class Controller : MonoBehaviour
         }
 
         return Vector3.zero;
-    }
-
-    // Input can wary, hence specific function.
-    Vector3 getInput() {
-        switch (controllerType) {
-            case 0:
-                return getKeyboardInput();
-            case 1:
-                return getGyroscopeInput();
-            case 2:
-                return getTouchscreenInput();
-        }
-
-        return Vector2.zero;
     }
 
     void obtainHorizontalEffect() {
