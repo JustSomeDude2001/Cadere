@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f312ea0b3f6a9d0e5bd14cdadf616781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: -1, z: 0}
+  movementVector: {x: 0, y: -3, z: 0}
 --- !u!54 &761370615
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f312ea0b3f6a9d0e5bd14cdadf616781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: -1, z: 0}
+  movementVector: {x: 0, y: -3, z: 0}
 --- !u!54 &1245646225
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1025,6 +1025,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654087792755153716, guid: 33d3933e19282c78f85221c3ac2ba737,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654087792755153716, guid: 33d3933e19282c78f85221c3ac2ba737,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654087792755153716, guid: 33d3933e19282c78f85221c3ac2ba737,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1654087792755153716, guid: 33d3933e19282c78f85221c3ac2ba737,
         type: 3}

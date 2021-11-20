@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    private PlayerStats stats;
     private Rigidbody selfRigidbody;
     private Vector3 screenCenterPoint;
 
@@ -15,18 +16,17 @@ public class Controller : MonoBehaviour
     /*
         Magnitude multiplier of acceleration caused by inputs.
     */
-    public static int sensitivity = 40;
 
-    // Start is called before the first frame update
     void OnEnable()
     {
+        stats = PlayerStats.GetInstance();
         selfRigidbody = GetComponent<Rigidbody>();
         screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Debug.Log(screenCenterPoint);
     }
 
     public void setSensitivity(int newSensitivity) {
-        sensitivity = newSensitivity;
+        stats.sensitivity = newSensitivity;
     }
 
     Vector3 getInput() {
@@ -57,13 +57,13 @@ public class Controller : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 newVelocity = selfRigidbody.velocity;
-        newVelocity.x = getInput().x * sensitivity;
+        newVelocity.x = getInput().x * stats.sensitivity;
 
         Vector3 oldVelocity = selfRigidbody.velocity;
 
         Vector3 deltaVelocity = newVelocity - oldVelocity;
 
-        selfRigidbody.AddForce(deltaVelocity * selfRigidbody.mass);
+        selfRigidbody.AddForce(deltaVelocity, ForceMode.Force);
         //selfRigidbody.velocity = (new Vector3(getInput().x * sensitivity,
         //                          selfRigidbody.velocity.y, 0));
         // selfRigidbody.AddForce(getInput() * sensitivity);   
