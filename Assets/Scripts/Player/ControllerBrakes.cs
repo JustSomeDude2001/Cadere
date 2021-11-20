@@ -7,15 +7,16 @@ using UnityEngine;
 /// </summary>
 public class ControllerBrakes : MonoBehaviour
 {
-    public float brakingRate = 0.5f;
+    private PlayerStats stats;
     private Rigidbody selfRigidbody;
     // Start is called before the first frame update
     void Start()
     {
+        stats = PlayerStats.GetInstance();
         selfRigidbody = GetComponent<Rigidbody>();
     }
 
     public void brake() {
-        selfRigidbody.velocity *= brakingRate;
+        selfRigidbody.velocity *= stats.brakeRate;
     }
 }
