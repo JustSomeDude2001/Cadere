@@ -8,6 +8,9 @@ public class StopGame : MonoBehaviour
     public void stopGame() {
         Debug.Log("Exiting to menu");
 
+        PlayerPrefs.SetInt("Money", PlayerStats.GetInstance().money);
+        PlayerPrefs.Save();
+
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

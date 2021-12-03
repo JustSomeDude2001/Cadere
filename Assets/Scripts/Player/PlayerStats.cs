@@ -18,10 +18,15 @@ public class PlayerStats
 
     public float restExitModifier = 10;
 
-    public float sensitivity = 1;
+    public float sensitivity = 30;
+
+    public int money = 0;
+
+    public float globalMoneySpawnChance = 1;
+    public float moneyMultiplier = 1;
 
     private PlayerStats() {
-
+        money = PlayerPrefs.GetInt("Money", 0);
     }
 
     public static PlayerStats GetInstance() {
