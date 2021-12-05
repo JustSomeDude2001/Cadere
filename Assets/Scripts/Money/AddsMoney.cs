@@ -16,6 +16,7 @@ public class AddsMoney : MonoBehaviour
 
     public void addMoney() {
         playerStats.money += value;
+        PlayerStats.saveGame();
     }
 
     private void OnTriggerEnter(Collider other) {
