@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unlockable : MonoBehaviour
 {   
     public string unlockableName;
-    public bool isUnlocked = false;
+    public bool isUnlocked;
 
     PlayerStats playerStats;
     void Start()

@@ -22,6 +22,7 @@ public class SetsSkin : MonoBehaviour
             if(selfExpendsMoney.expendMoney() == false) {
                 return;
             }
+            selfUnlockable.unlock();
         }
         Debug.Log("Set skin to" + skin);
         playerStats.currentSkin = skin;
