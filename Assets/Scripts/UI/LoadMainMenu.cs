@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StopGame : MonoBehaviour
+public class LoadMainMenu : MonoBehaviour
 {
-    public void stopGame() {
+    public void loadMainMenu() {
         Debug.Log("Exiting to menu");
 
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
