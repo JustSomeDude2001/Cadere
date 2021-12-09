@@ -7,6 +7,7 @@ public class PlayerStats
     private static PlayerStats instance;
 
     public float brakeRate = 0.5f;
+    public float boostRate = 25f;
 
     public float minYSpeed = -10;
     public float maxYSpeed = +10;
